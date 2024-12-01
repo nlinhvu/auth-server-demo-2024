@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: auth-server-demo
+
+  security:
+    user:
+      name: linh@company.com
+      password: pw
+    oauth2:
+      authorizationserver:
+        client:
+          my-spring-oauth-client:
+            registration:
+              client-id: "pkce-client"
+              client-authentication-methods:
+                - "none"
+              authorization-grant-types:
+                - "authorization_code"
+              redirect-uris:
+                - "http://127.0.0.1:8080/login/oauth2/code/pkce-client"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
+            require-proof-key: true
+
+logging:
+  level:
+    org.springframework.security: trace
