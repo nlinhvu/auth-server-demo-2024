@@ -14,7 +14,8 @@ import java.util.function.Consumer;
 
 public class RealmValidator implements Consumer<OAuth2AuthorizationCodeRequestAuthenticationContext> {
 
-    private Map<String, Set<String>> allowedRealmsForClient = Map.of("pkce-client", Set.of("team-invoice-realm", "team-order-realm", "team-product-realm"));
+    private Map<String, Set<String>> allowedRealmsForClient = Map.of(
+            "pkce-client", Set.of("invoice-realm", "order-realm", "product-realm"));
 
     @Override
     public void accept(OAuth2AuthorizationCodeRequestAuthenticationContext authenticationContext) {
